@@ -87,6 +87,30 @@ cd Bant_MLVA31_analyzer
 ```
 The test script takes two `.fastq` files from the Demo_files directory (`Test_1.fastq`, `Test_2.fastq`) with raw sequencing reads of two _Bacillus anthracis_ samples, and executes `Bant_MLVA31_analyzer.sh` for all of them. Then it compares the results with the expected output files in Demo_files/Demo_results/. If the results match, the script should report: "Test successful.". In case of differences, the test fails and the script reports "Test failed: differences found. Check dependencies.", the dependencies should be double checked. If the test script fails, please check the test log carefully.
 
+#### Using Apptainer
+
+Alternatively, a container for `Bant_MLVA31_analyzer` can be built in which all dependencies are installed and which has the advantage of being portable (i.e. it can be moved between computers without having to reinstall dependencies). To do this, you should clone the repository (as described above) and assuming Apptainer (formerly Singularity) is installed the container can be built running the following command:
+
+`cd Bant_MLVA31_analyzer && apptainer build Bant_MLVA31_analyzer.sif apptainer.def`
+
+The container should already have the required BLAST database, but can also be created with the following command:
+
+`apptainer exec Bant_MLVA31_analyzer.sif ./download_create_blast_database.sh`
+
+In this case, please run the test as follows:
+
+`apptainer exec Bant_MLVA31_analyzer.sif ./test_script.sh`
+
+If you do not need the database in the container, please remove the following lines from `apptainer.def`:
+```
+78 cd /opt/Bant_MLVA31_analyzer 79 ./download_create_blast_database.sh
+```
+Using the container, the main script `Bant_MLVA31_analyzer.sh` can be executed in the following way:
+
+`apptainer exec Bant_MLVA31_analyzer.sif -p /opt/Bant_MLVA31_analyzer/Supporting_files -d /opt/Bant_MLVA31_analyzer/Script_directory Bant_MLVA31_analyzer.sh`
+
+An interactive shell can also be opened in the container by executing `apptainer shell Bant_MLVA31_analyzer.sif`, which makes all dependencies and the main script accessible on the command line for more flexible use.
+
 ## **Usage**
 
 #### **Input**
