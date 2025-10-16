@@ -103,11 +103,12 @@ In this case, please run the test as follows:
 
 If you do not need the database in the container, please remove the following lines from `apptainer.def`:
 ```
-78 cd /opt/Bant_MLVA31_analyzer 79 ./download_create_blast_database.sh
+78 cd /opt/Bant_MLVA31_analyzer
+79 ./download_create_blast_database.sh
 ```
 Using the container, the main script `Bant_MLVA31_analyzer.sh` can be executed in the following way:
 
-`apptainer exec Bant_MLVA31_analyzer.sif -p /opt/Bant_MLVA31_analyzer/Supporting_files -d /opt/Bant_MLVA31_analyzer/Script_directory Bant_MLVA31_analyzer.sh`
+`apptainer exec Bant_MLVA31_analyzer.sif Bant_MLVA31_analyzer.sh -p /opt/Bant_MLVA31_analyzer/Supporting_files -d /opt/Bant_MLVA31_analyzer/Script_directory`
 
 An interactive shell can also be opened in the container by executing `apptainer shell Bant_MLVA31_analyzer.sif`, which makes all dependencies and the main script accessible on the command line for more flexible use.
 
