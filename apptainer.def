@@ -58,6 +58,12 @@ From: debian:bullseye-slim
     python3 -m pip install --upgrade pip
     python3 -m pip install cutadapt==3.2
 
+    # Install biopython
+    python3 -m pip install biopython
+
+    # Install edlib
+    python3 -m pip install edlib
+
     # Install seqtk >=1.3
     git clone https://github.com/lh3/seqtk.git
     cd seqtk && git checkout v1.3 && make && cd ..

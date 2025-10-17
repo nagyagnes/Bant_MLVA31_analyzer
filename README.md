@@ -95,11 +95,11 @@ Alternatively, a container for `Bant_MLVA31_analyzer` can be built in which all 
 
 The container should already have the required BLAST database, but can also be created with the following command:
 
-`apptainer exec Bant_MLVA31_analyzer.sif ./download_create_blast_database.sh`
+`apptainer exec --bind ./:/opt/Bant_MLVA31_analyzer Bant_MLVA31_analyzer.sif ./download_create_blast_database.sh`
 
 In this case, please run the test as follows:
 
-`apptainer exec Bant_MLVA31_analyzer.sif ./test_script.sh`
+`apptainer exec --bind ./:/opt/Bant_MLVA31_analyzer Bant_MLVA31_analyzer.sif ./apptainer_test_script.sh`
 
 If you do not need the database in the container, please remove the following lines from `apptainer.def`:
 ```
