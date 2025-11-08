@@ -213,8 +213,8 @@ for i in ${!strain[@]}; do
 		## Search for amplicons in reads with primersearch ##
 		primersearch -seqall ${repeats[$k]}_ref_unit.fastq -infile $patterndir/Primer_files/${repeats[$k]}_primer -mismatchpercent 10 -outfile ${repeats[$k]}_ref_unit.primers.primersearch
 		## Export the length value of the most frequent amplicons with the same length  ##
-		perl -i -pe 's/[ \t]+//g' ${repeats[$k]}_ref_unit.primers.primersearch
-		perl -i -n -e 'print if /\S/' ${repeats[$k]}_ref_unit.primers.primersearch
+		sed -i 's/[[:space:]]//g' ${repeats[$k]}_ref_unit.primers.primersearch
+		sed -i '/^$/d' ${repeats[$k]}_ref_unit.primers.primersearch
 		grep -oP '(?<=Amplimerlength:).*(?=bp)' ${repeats[$k]}_ref_unit.primers.primersearch > ${repeats[$k]}_ref_unit.sizes.txt
 		## Determine the number of reads containing amplicon with exported length value ##
 		readnr=$(wc -l < ${repeats[$k]}_ref_unit.sizes.txt)
