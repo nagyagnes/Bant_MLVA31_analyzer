@@ -8,28 +8,13 @@
 # version: 2025-11-08
 #=========================================================================================================================
 
-# Installing and loading required packages:
+# Loading required packages:
 
-if(!require(permute)){
-  install.packages("permute")
-  library(permute)
-}
-if(!require(lattice)){
-  install.packages("lattice")
-  library(lattice)
-}
-if(!require(vegan)){
-  install.packages("vegan")
-  library(vegan)
-}
-if(!require(ape)){
-  install.packages("ape")
-  library(ape)
-}
-if(!require(cluster)){
-  install.packages("cluster")
-  library(cluster)
-}
+library(permute, lib.loc="/usr/lib/R/library/")
+library(lattice, lib.loc="/usr/lib/R/library/")
+library(vegan, lib.loc="/usr/lib/R/library/")
+library(ape, lib.loc="/usr/lib/R/library/")
+library(cluster, lib.loc="/usr/lib/R/library/")
 
 ################################################
 ### SET WORKING DIRECTORY for "workdir3.txt" ###
