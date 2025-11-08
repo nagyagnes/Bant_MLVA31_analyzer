@@ -5,13 +5,31 @@
 #
 # Author: Peter Sály (saly.peter@ecolres.hu)
 #
-# version: 2024-01-21
+# version: 2025-11-08
 #=========================================================================================================================
 
-# Loading packages
-library(vegan) # Cluster analysis
-library(ape)   # Phylogram
-library(cluster)
+# Installing and loading required packages:
+
+if(!require(permute)){
+  install.packages("permute")
+  library(permute)
+}
+if(!require(lattice)){
+  install.packages("lattice")
+  library(lattice)
+}
+if(!require(vegan)){
+  install.packages("vegan")
+  library(vegan)
+}
+if(!require(ape)){
+  install.packages("ape")
+  library(ape)
+}
+if(!require(cluster)){
+  install.packages("cluster")
+  library(cluster)
+}
 
 ################################################
 ### SET WORKING DIRECTORY for "workdir3.txt" ###
