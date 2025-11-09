@@ -6,7 +6,11 @@
 # Author: Peter Sály (saly.peter@ecolres.hu)
 #
 # version: 2025-11-08
+
 #=========================================================================================================================
+
+Sys.setenv(LANG="en_US.UTF-8")
+Sys.setenv(LC_ALL="en_US.UTF-8")
 
 # Loading required packages:
 
