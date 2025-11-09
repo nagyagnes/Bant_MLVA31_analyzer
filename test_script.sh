@@ -2,8 +2,8 @@
 
 # Testing of the installation of dependencies and running of Bant_MLVA31_analyzer.sh script 
 
-path=$(readlink -f ${BASH_SOURCE:-$0})
-DIR_PATH=$(dirname $path)
+path=$(realpath ./)
+DIR_PATH=$(realpath ./)
 
 ./Bant_MLVA31_analyzer.sh -s Test_1,Test_2 -o $DIR_PATH/Demo_files -m Y -i N
 mv {$DIR_PATH/Demo_files/Test_1/Test_1.fastq,$DIR_PATH/Demo_files/Test_2/Test_2.fastq} $DIR_PATH/Demo_files
