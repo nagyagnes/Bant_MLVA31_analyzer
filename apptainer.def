@@ -33,11 +33,25 @@ From: debian:bullseye-slim
         libncursesw5-dev \
         libtool \
         pkg-config \
-        locales \
         gawk \
-        procps
+        procps \
+        gfortran \
+        gfortran-10 \
+        libgfortran-10-dev \
+        liblapack-dev \
+        libblas-dev
 
+    apt-get install -y locales
+    sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
+    locale-gen
+    
     apt-get install -y --no-install-recommends r-base
+    
+    # Install R packages permute and vegan
+    wget http://cran.r-project.org/src/contrib/permute_0.9-8.tar.gz
+    wget http://cran.r-project.org/src/contrib/Archive/vegan/vegan_2.6-4.tar.gz
+    R CMD INSTALL permute_0.9-8.tar.gz
+    R CMD INSTALL vegan_2.6-4.tar.gz
 
     # Install minimap2 >=2.17
     apt-get install -y minimap2
@@ -81,9 +95,9 @@ From: debian:bullseye-slim
     chmod +x /opt/Bant_MLVA31_analyzer/Bant_MLVA31_analyzer.sh
 
     export PATH="/opt/Bant_MLVA31_analyzer:$PATH"
-
+    
     cd /opt/Bant_MLVA31_analyzer 
     ./download_create_blast_database.sh
-
+    
 %runscript
     exec "$@"
