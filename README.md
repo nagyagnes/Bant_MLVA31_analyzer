@@ -87,9 +87,9 @@ cd Bant_MLVA31_analyzer
 ```
 The test script takes two `.fastq` files from the Demo_files directory (`Test_1.fastq`, `Test_2.fastq`) with raw sequencing reads of two _Bacillus anthracis_ samples, and executes `Bant_MLVA31_analyzer.sh` for all of them. Then it compares the results with the expected output files in Demo_files/Demo_results/. If the results match, the script should report: "Test successful.". In case of differences, the test fails and the script reports "Test failed: differences found. Check dependencies.", the dependencies should be double checked. If the test script fails, please check the test log carefully.
 
-#### Using Apptainer
+## **Using Apptainer**
 
-Alternatively, a container for `Bant_MLVA31_analyzer` can be built in which all dependencies are installed and which has the advantage of being portable (i.e. it can be moved between computers without having to reinstall dependencies). To do this, you should clone the repository (as described above) and assuming Apptainer (formerly Singularity) is installed the container can be built running the following command:
+Alternatively, a container for `Bant_MLVA31_analyzer` can be built in which all dependencies are installed and which has the advantage of being portable (i.e. it can be moved between computers without having to reinstall dependencies). To do this, you should clone the repository (as described above) and assuming [Apptainer](https://github.com/apptainer/apptainer) (formerly Singularity) is installed the container can be built running the following command:
 
 `cd Bant_MLVA31_analyzer && apptainer build Bant_MLVA31_analyzer.sif apptainer.def`
 
@@ -103,8 +103,8 @@ In this case, please run the test as follows:
 
 If you do not need the database in the container, please remove the following lines from `apptainer.def`:
 ```
-78 cd /opt/Bant_MLVA31_analyzer
-79 ./download_create_blast_database.sh
+ 99 cd /opt/Bant_MLVA31_analyzer
+100 ./download_create_blast_database.sh
 ```
 Using the container, the main script `Bant_MLVA31_analyzer.sh` can be executed in the following way:
 
@@ -117,18 +117,18 @@ An interactive shell can also be opened in the container by executing `apptainer
 #### **Input**
 
 The script accepts one `.fastq` file per each sample containing all passed Nanopore reads after basecalling and demultiplexing (in case of multiple samples)
-By default, input `<sample>.fastq` file for each sample should be located in Bant_MLVA31_analyzer/Output_directory. The location of the input files can be changed using `-o your/path/to/directory of input files`. 
+The location of input `<sample>.fastq` file for each sample should be selected with using `-o <your/path/to/directory_of_input_files>`. 
 
 #### **Command**
 
-`Bant_MLVA31_analyzer.sh -s <sample1>,<sample2>,... -m Y -i Y`
+`Bant_MLVA31_analyzer.sh -s <sample1>,<sample2>,... -o <your/path/to/directory_of_input_files> -m Y -i Y`
 
 #### **Options**
 
 The list of options can be found in the help menu (by running `Bant_MLVA31_analyzer.sh -h`):
 ```
 Bant_MLVA31_analyzer -- performs 31-loci MLVA typing for Bacillus anthracis directly from ONT reads from environmental samples, and finds the closest relative strains
- Version 2025-08-26
+ Version 2025-11-08
  
  Options: [-h] [-s -p -d -o -m -i]
  where:
@@ -136,7 +136,7 @@ Bant_MLVA31_analyzer -- performs 31-loci MLVA typing for Bacillus anthracis dire
  -s=Set a name or number for sample which is the name of the input.fasq file [Required]
  -p=Set the directory for supporting files [Default: Supporting_files]
  -d=Set the directory for scripts [Default: Script_directory]
- -o=Set the output directory which contains input sample.fastq file and will contain output directories for intermediate and result files [Default: Output_directory]
+ -o=Set the output directory which contains input sample.fastq file and will contain output directories for intermediate and result files [Required]
  -m=Determine the closest neighbour strain from global Bacillus anthracis database [Required, Y=yes, N=no]
  -i=Keep intermediate files and directories created during analysis [Required, Y=yes, N=no]
 ```
@@ -170,7 +170,7 @@ Bant_MLVA31_analyzer -- performs 31-loci MLVA typing for Bacillus anthracis dire
 
 #### **Result files**
 
-The result files will be created for each sample separately in Bant_MLVA31_analyzer/Output_directory/<Sample>/Results directory.
+The result files will be created for each sample separately in your/path/to/directory_of_input_files/Sample/Results directory.
 
 * `<sample>_final_results.csv` file: contains MLVA result table with columns Repeat Name; Repeat Length; Repeat Unit Number; Comment, and contains table with the name, canSNP type, geographical origin and MLVA data of 20 closest neighbour strains (if it was chosen in options)
 
@@ -188,7 +188,7 @@ The result files will be created for each sample separately in Bant_MLVA31_analy
 
 #### **Intermediate directories and files**
 
-All intermediate files created during analysis will be saved for each sample in Bant_MLVA31_analyzer/Output_directory/Sample/Map,Repeats,Consensus,Close_relatives directories. If these are not required after analysis, the complete directories could be removed with selection of `-i N`.
+All intermediate files created during analysis will be saved for each sample in your/path/to/directory_of_input_files/Sample/Map,Repeats,Consensus,Close_relatives directories. If these are not required after analysis, the complete directories could be removed with selection of `-i N`.
 
 ## **References**
 
