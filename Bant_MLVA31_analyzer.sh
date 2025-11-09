@@ -36,8 +36,8 @@ where:\n
 
 now="$(date +'%Y-%m-%d %T')"
 version="Bant_MLVA31_analyzer Version 2025-11-08"
-path=$(readlink -f ${BASH_SOURCE:-$0})
-DIR_PATH=$(dirname $path)
+path=$(realpath ./)
+DIR_PATH=$(realpath ./)
 patterndir=$DIR_PATH/Supporting_files
 scriptdir=$DIR_PATH/Script_directory
 while getopts 's:p:d:o:m:i:h' options; do
