@@ -22,7 +22,7 @@
 ##########################################################################
 
 usage="Bant_MLVA31_analyzer -- performs 31-loci MLVA typing for Bacillus anthracis directly from ONT reads from environmental samples, and finds the closest relative strains\n
-Version 2025-08-26\n
+Version 2025-11-08\n
 \n
 Options: [-h] [-s -p -d -o -m -i]\n
 where:\n
@@ -30,31 +30,32 @@ where:\n
 -s=Set a name or number for sample which is the name of the input .fasq file [Required]\n
 -p=Set the directory for supporting files [Default: Supporting_files]\n
 -d=Set the directory for scripts [Default: Script_directory]\n
--o=Set the output directory which contains input sample.fastq file and will contain output directories for intermediate and result files [Default: Output_directory]\n
+-o=Set the output directory which contains input sample.fastq file and will contain output directories for intermediate and result files [Required]\n
 -m=Determine the closest neighbour strain from global Bacillus anthracis database [Required, Y=yes, N=no]\n
 -i=Keep intermediate files and directories created during analysis [Required, Y=yes, N=no]"
 
 now="$(date +'%Y-%m-%d %T')"
-version="Bant_MLVA31_analyzer Version 2025-08-26"
+version="Bant_MLVA31_analyzer Version 2025-11-08"
 path=$(readlink -f ${BASH_SOURCE:-$0})
 DIR_PATH=$(dirname $path)
 patterndir=$DIR_PATH/Supporting_files
 scriptdir=$DIR_PATH/Script_directory
-OUTPUT=$DIR_PATH/Output_directory
 while getopts 's:p:d:o:m:i:h' options; do
     case "${options}" in
         h)  echo -e $usage && exit       ;;
         s)  set -f
             IFS=,
-            strain=($OPTARG)	          ;;
+            strain=($OPTARG)	         ;;
         p)  patterndir="${OPTARG}"       ;;
         d)  scriptdir="${OPTARG}"        ;;
-        o)  OUTPUT="${OPTARG}"	  ;;
+        o)  set -f
+            IFS=,
+            OUTPUT=($OPTARG)	         ;;
         m)  set -f
             closest_neighbour=($OPTARG)  ;;
         i)  set -f
             intermediate_files=($OPTARG) ;;
-   *)	echo -e $usage		          ;;
+   *)	echo -e $usage		         ;;
 esac
 done
 shift $((OPTIND-1))
