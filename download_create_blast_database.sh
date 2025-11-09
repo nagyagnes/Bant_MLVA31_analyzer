@@ -2,8 +2,8 @@
 
 # Download and create BLAST database for Bant_MLVA31_analyzer.sh script
 
-path=$(readlink -f ${BASH_SOURCE:-$0})
-DIR_PATH=$(dirname $path)
+path=$(realpath ./)
+DIR_PATH=$(realpath ./)
 patterndir=$DIR_PATH/Supporting_files
 
 mkdir $DIR_PATH/Output_directory
