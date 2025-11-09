@@ -6,7 +6,6 @@ path=$(realpath ./)
 DIR_PATH=$(realpath ./)
 patterndir=$DIR_PATH/Supporting_files
 
-mkdir $DIR_PATH/Output_directory
 cd $patterndir
 mkdir $patterndir/Blast_dbase
 cd $patterndir/Blast_dbase
