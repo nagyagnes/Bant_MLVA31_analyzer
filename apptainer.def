@@ -96,8 +96,8 @@ From: debian:bullseye-slim
 
     export PATH="/opt/Bant_MLVA31_analyzer:$PATH"
     
-    cd /opt/Bant_MLVA31_analyzer 
-    ./download_create_blast_database.sh
+    # cd /opt/Bant_MLVA31_analyzer 
+    # ./download_create_blast_database.sh
     
 %runscript
     exec "$@"
