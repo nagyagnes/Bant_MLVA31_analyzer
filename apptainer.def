@@ -95,9 +95,6 @@ From: debian:bullseye-slim
     chmod +x /opt/Bant_MLVA31_analyzer/Bant_MLVA31_analyzer.sh
 
     export PATH="/opt/Bant_MLVA31_analyzer:$PATH"
-    
-    cd /opt/Bant_MLVA31_analyzer 
-    ./download_create_blast_database.sh
-    
+   
 %runscript
     exec "$@"
