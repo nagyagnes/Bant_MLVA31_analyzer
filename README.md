@@ -93,22 +93,17 @@ Alternatively, a container for `Bant_MLVA31_analyzer` can be built in which all 
 
 `cd Bant_MLVA31_analyzer && apptainer build Bant_MLVA31_analyzer.sif apptainer.def`
 
-The container should already have the required BLAST database, but can also be created with the following command:
+The container does not have the required BLAST database by default. To create the database, run the following command:
 
 `apptainer exec --bind ./:/opt/Bant_MLVA31_analyzer Bant_MLVA31_analyzer.sif ./download_create_blast_database.sh`
 
-In this case, please run the test as follows:
+To test the appropriate running of the script using the container, please run the test as follows:
 
 `apptainer exec --bind ./:/opt/Bant_MLVA31_analyzer Bant_MLVA31_analyzer.sif ./apptainer_test_script.sh`
 
-If you do not need the database in the container, please remove the following lines from `apptainer.def`:
-```
- 99 cd /opt/Bant_MLVA31_analyzer
-100 ./download_create_blast_database.sh
-```
 Using the container, the main script `Bant_MLVA31_analyzer.sh` can be executed in the following way:
 
-`apptainer exec Bant_MLVA31_analyzer.sif Bant_MLVA31_analyzer.sh -p /opt/Bant_MLVA31_analyzer/Supporting_files -d /opt/Bant_MLVA31_analyzer/Script_directory`
+`apptainer exec Bant_MLVA31_analyzer.sif Bant_MLVA31_analyzer.sh`
 
 An interactive shell can also be opened in the container by executing `apptainer shell Bant_MLVA31_analyzer.sif`, which makes all dependencies and the main script accessible on the command line for more flexible use.
 
