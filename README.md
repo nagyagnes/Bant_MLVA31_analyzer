@@ -69,6 +69,7 @@ To make `Bant_MLVA31_analyzer.sh` globally available, it should be added to `$PA
 export PATH=$(realpath ./):$PATH
 ```
 Optionally, the export can be made permanent by adding the above line to your `.bashrc`, which is probably located in `$HOME/.bashrc`.
+Before running, make `Bant_MLVA31_analyzer.sh`, `download_create_blast_database.sh` and `test_script.sh` scripts executable with using `chmod +x` command.
 
 #### **2. Download and create the required database:**
 
