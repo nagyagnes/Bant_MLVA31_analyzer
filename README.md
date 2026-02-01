@@ -1,8 +1,3 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
 # **Bant_MLVA31_analyzer**
 
 ## **Description**
