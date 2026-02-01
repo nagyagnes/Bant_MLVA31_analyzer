@@ -73,7 +73,7 @@ Optionally, the export can be made permanent by adding the above line to your `.
 
 #### **2. Download and create the required database:**
 
-The script relies on [Bcereus_genomes database](https://zenodo.org/records/17078231), which contains complete and chromosome level assembled genomes of Bacillus cereus group bacilli available at [NCBI Datasets Genome](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=86661&assembly_level=2:3)
+The script relies on [Bcereus_genomes database](https://zenodo.org/records/18399429), which contains complete and chromosome level assembled genomes of Bacillus cereus group bacilli available at [NCBI Datasets Genome](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=86661&assembly_level=2:3)
 To download and create the database, run:
 ```bash
 cd Bant_MLVA31_analyzer
@@ -148,7 +148,7 @@ Bant_MLVA31_analyzer -- performs 31-loci MLVA typing for Bacillus anthracis dire
         * `<repeat>_primer` files: a tab-delimited file for _in silico_ PCR for each of 31 repeats with name, forward and reverse sequences of primers flanking the given repeat region. These primer sequences are used in original _Bacillus anthracis_ MLVA31 typing scheme described by Beyer et al. 2012.
         * `<repeat>_primercut.txt` files: 22-25 base long sequences of forward and reverse primers 5' ends for trimming with `Cutadapt`
    * `Bcereus_genomes`: database used in offline blast is downloaded and created with `download_create_blast_database.sh` script
-   * `BaMLVA_genotypes_ref.csv`, `BaMLVA31_genotypes_R.csv`: in-house _Bacillus anthracis_ MLVA database with MLVA profiles of 523 strains with known geographic origin
+   * `BaMLVA_genotypes_ref.csv`, `BaMLVA31_genotypes_R.csv`: in-house [Bacillus anthracis MLVA database](https://zenodo.org/records/18399383) with MLVA profiles of 559 strains with known geographic origin
            
 * Bant_MLVA31_analyzer/Script_directory:
 
@@ -159,7 +159,6 @@ Bant_MLVA31_analyzer -- performs 31-loci MLVA typing for Bacillus anthracis dire
 
    * `Bant_MLVA31_analyzer_workflow.pdf`
    * `BaMLVA_ref_seq_collection.xlsx`: detailed data about the used reference sequences in `<repeat>_ref.fasta` files
-   * `BaMLVA_genotypes_ref.xlsx`: detailed information about data sources of in-house _Bacillus anthracis_ MLVA database with MLVA profiles of 523 strains with known geographic origin
 
 ## **Output**
 
