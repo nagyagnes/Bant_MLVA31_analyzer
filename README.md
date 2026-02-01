@@ -1,3 +1,8 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # **Bant_MLVA31_analyzer**
 
 ## **Description**
@@ -38,7 +43,8 @@ Detailed workflow of the script is presented in Documents/Bant_MLVA31_analyzer_w
 
 * R >=4.2.1. (https://www.R-project.org)
 
-* minimap2 >=2.17 (https://github.com/lh3/minimap2)
+* minimap2 = 2.17 (https://github.com/lh3/minimap2)
+     * other releases of minimap2 give incorrect results for certain VNTR markers
 
 * samtools >=1.10 (http://www.htslib.org/) 
  
@@ -69,7 +75,6 @@ To make `Bant_MLVA31_analyzer.sh` globally available, it should be added to `$PA
 export PATH=$(realpath ./):$PATH
 ```
 Optionally, the export can be made permanent by adding the above line to your `.bashrc`, which is probably located in `$HOME/.bashrc`.
-Before running, make `Bant_MLVA31_analyzer.sh`, `download_create_blast_database.sh` and `test_script.sh` scripts executable with using `chmod +x` command.
 
 #### **2. Download and create the required database:**
 
